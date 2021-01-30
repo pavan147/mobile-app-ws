@@ -69,7 +69,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                
                res.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOCKEN_PRIFIX + tocken);
                res.addHeader("userID", userDto.getUserId());
-		
+		 
 	}
 	
 }

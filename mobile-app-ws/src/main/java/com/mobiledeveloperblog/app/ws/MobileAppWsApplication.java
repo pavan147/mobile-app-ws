@@ -20,6 +20,6 @@ public class MobileAppWsApplication {
 	
 	@Bean
 	public SpringApplicationContext springApplicationContext() {
-		return new SpringApplicationContext();
+		return new SpringApplicationContext(); 
 	}
 }

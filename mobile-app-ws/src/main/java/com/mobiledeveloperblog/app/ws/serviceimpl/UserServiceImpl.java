@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
 			throw new UsernameNotFoundException(email);
 		}
 		UserDto dto = new UserDto();
-		BeanUtils.copyProperties(userEntity, dto);
+		BeanUtils.copyProperties(userEntity, dto); 
 		return dto;
 	}
 

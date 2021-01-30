@@ -6,7 +6,7 @@ public class SecurityConstants {
 	public static final String TOCKEN_PRIFIX = "Bearer ";
 	public static final String HEADER_STRING = "Authorization";
 	public static final String SIGN_UP_URL = "/users";
-	public static final String TOCKEN_SECRET = "dfk95erdcnqlp7sdsfh";
+	public static final String TOCKEN_SECRET = "dfk95erdcnqlp7sdsfh"; 
 	
 
 }

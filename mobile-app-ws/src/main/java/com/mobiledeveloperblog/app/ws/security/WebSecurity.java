@@ -28,11 +28,11 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		.antMatchers(HttpMethod.POST, "/users").permitAll()
 		.anyRequest().authenticated().and().addFilter(getAuthenticationFilter());
 		//.addFilter(new AuthenticationFilter(authenticationManager())); //for default login url
-	}
+	} 
 
 	/*
 	 * to tell us Spring which class we are using for security and which bcrypt algo
-	 * we are using to decrypt password
+	 * we are using to decrypt password 
 	 */
 	@Override
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
