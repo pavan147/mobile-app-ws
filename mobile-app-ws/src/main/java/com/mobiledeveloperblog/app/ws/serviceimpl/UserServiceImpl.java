@@ -2,6 +2,9 @@ package com.mobiledeveloperblog.app.ws.serviceimpl;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.mobiledeveloperblog.app.ws.UserRepository;
@@ -17,6 +20,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	Utils utils;
+	
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Override
 	public UserDto createUser(UserDto userDto) {
@@ -26,7 +32,7 @@ public class UserServiceImpl implements UserService {
 		UserEntity userEntity = new UserEntity();
 		
 		BeanUtils.copyProperties(userDto, userEntity);
-		userEntity.setEncreptedPassword("Test");
+		userEntity.setEncreptedPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
 		
 		String publicUserID = utils.generateUserId(30);
 		userEntity.setUserId(publicUserID);
@@ -37,6 +43,12 @@ public class UserServiceImpl implements UserService {
 		BeanUtils.copyProperties(storedUserDetail, returnValue);
 		
 		return returnValue;
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
