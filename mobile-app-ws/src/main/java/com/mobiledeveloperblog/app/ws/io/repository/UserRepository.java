@@ -1,4 +1,4 @@
-package com.mobiledeveloperblog.app.ws;
+package com.mobiledeveloperblog.app.ws.io.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
