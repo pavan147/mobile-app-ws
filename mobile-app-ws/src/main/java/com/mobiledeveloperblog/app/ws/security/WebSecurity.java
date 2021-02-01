@@ -5,6 +5,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.mobiledeveloperblog.app.ws.service.UserService;
@@ -27,7 +28,12 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		http.csrf().disable().authorizeRequests()
 		.antMatchers(HttpMethod.POST, "/users").permitAll()
 		.anyRequest().authenticated().and().addFilter(getAuthenticationFilter())//.addFilter(new AuthenticationFilter(authenticationManager())); //for default login url
-	    .addFilter(new AuthorizationFilter(authenticationManager()));
+	    .addFilter(new AuthorizationFilter(authenticationManager()))
+		
+	    //making stateless so need  jwttocken to authoncatte the request
+	    
+		.sessionManagement()
+		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 	} 
 
 	/*
